@@ -1,17 +1,10 @@
 trigger:
 - master
 
-pool:
-  name: MyAgentPool
-  demands: Agent.Name -equals Agent-1
+pool: 
+  name: Default
 
 steps:
-- task: AgentJob@1
-  displayName: 'Agent Job'
-  inputs:
-    agentPool: 'MyAgentPool'
-    agentSpecification: 'Agent-1'
-    continueOnError: false
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -22,3 +15,4 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
