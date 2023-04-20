@@ -5,10 +5,10 @@ pool:
   name: Default
 
 steps:
-- task: Maven@3
+- task: Bash@3
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    goals: 'clean package'
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      mvn clean package -Dmaven.test.skip=true
