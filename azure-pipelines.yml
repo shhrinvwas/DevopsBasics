@@ -12,5 +12,5 @@ steps:
       # Write your commands here
       
       echo 'Hello world'
-      sudo echo "heelo World" > /opt/hello.txt
+      echo "heelo World" > hello.txt
   
