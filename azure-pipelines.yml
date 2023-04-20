@@ -1,15 +1,17 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - master
 
-pool: 
-  name: Default
+pool:
+  name: MyAgentPool
+  demands: Agent.Name -equals Agent-1
 
 steps:
+- task: AgentJob@1
+  displayName: 'Agent Job'
+  inputs:
+    agentPool: 'MyAgentPool'
+    agentSpecification: 'Agent-1'
+    continueOnError: false
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
