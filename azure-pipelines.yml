@@ -5,12 +5,10 @@ pool:
   name: Default
 
 steps:
-- task: Bash@3
+- task: Maven@3
   inputs:
-    targetType: 'inline'
-    script: |
-      # Write your commands here
-      
-      echo 'Hello world'
-      echo "heelo World" > hello.txt
-  
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    goals: 'clean package'
